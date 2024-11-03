@@ -13,3 +13,7 @@ async def webhook(request: Request):
 @app.get("/")
 def read_root():
     return {"message": "Hello, this is your Telegram bot!"}
+
+@app.post("/test")
+def read_root():
+    return {"message": "Hello, this is your Telegram bot!"}
