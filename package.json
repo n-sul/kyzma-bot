@@ -8,8 +8,8 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-     "build": "echo 'No build step required'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo 'No build step required'",
+    "start": "uvicorn main:app --host 0.0.0.0 --port $PORT"
   },
   "keywords": [],
   "author": "",
