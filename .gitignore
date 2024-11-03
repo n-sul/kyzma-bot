@@ -1,0 +1,6 @@
+# Sensitive data
+.env
+users.py
+bot.log
+node_modules
+.vercel

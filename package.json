@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "vercel": "^37.14.0"
+  },
+  "name": "kyzma-bot",
+  "version": "1.0.0",
+  "description": "The best telegram bot you will ever see in your life.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+     "build": "echo 'No build step required'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
