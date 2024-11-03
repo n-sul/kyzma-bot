@@ -197,8 +197,3 @@ def kuzma_farm(message):
         bot.reply_to(message, f"Вы заработали {coins} KyzmaCoin! У вас теперь {user['coins']} KyzmaCoin.")
         print(f"User {user['nickname']} farmed {coins} coins. Total: {user['coins']}")
         save_users()  # Save users after farming coins
-
-
-    
-bot.infinity_polling()
-

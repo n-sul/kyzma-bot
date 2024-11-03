@@ -1,19 +1,27 @@
-from fastapi import FastAPI, Request
-import telebot
+import json
+import os
+import time
+from http.server import BaseHTTPRequestHandler
+
+from telebot import types
+
 from bot import bot
 
-app = FastAPI()
+class handler(BaseHTTPRequestHandler):
+    server_version = 'WebhookHandler/1.0'
 
-@app.post("/webhook")
-async def webhook(request: Request):
-    update = await request.json()
-    bot.process_new_updates([telebot.types.Update.de_json(update)])
-    return {"status": "ok"}
+    def do_GET(self):
+        time.sleep(1.5)
+        bot.set_webhook('https://' + os.environ['VERCEL_URL'])
+        self.send_response(200)
+        self.end_headers()
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello, this is your Telegram bot!"}
+    def do_POST(self):
+        cl = int(self.headers['Content-Length'])
+        post_data = self.rfile.read(cl)
+        body = json.loads(post_data.decode())
 
-@app.post("/test")
-def read_root():
-    return {"message": "Hello, this is your Telegram bot!"}
+        bot.process_new_updates([types.Update.de_json(body)])
+
+        self.send_response(204)
+        self.end_headers()
